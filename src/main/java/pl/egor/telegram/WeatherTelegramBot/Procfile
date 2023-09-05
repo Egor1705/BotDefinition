@@ -1,0 +1,1 @@
+worker:  -cp target/classes:target/dependency/* pl.egor.telegram.WeatherTelegramBot

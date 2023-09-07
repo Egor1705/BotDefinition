@@ -1,4 +1,4 @@
-package pl.egor.telegram.WeatherTelegramBot;
+package pl.egor.telegram.TelegramDefinitionBot;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -10,10 +10,9 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class Weather {
+public class Definition {
 	
 	private String newWord;
-    private final String APIkey = "50be56eaed2b7cf97bfa4078ce455a2f";
 
     
     public String getUrlContent(String urlAddress) {
@@ -29,30 +28,26 @@ public class Weather {
             } // Считываем содержимое страницы построчно и добавляем его в объект StringReader
             bufferedReader.close();
         } catch (Exception e) {
-            System.out.println("Город не найден!");
+            System.out.println("Definition hasn't been found!");
         }
 
         return content.toString(); // Получение строки с данными.
     }
 
     // Метод, который получает текущую погоду в указанном городе.
-    public String getWeather(String word) {
+    public String getDefinition(String word) {
         // Делаем запрос к OpenWeatherMap. Возвращаемое значение метода getUrlContent() присваивается строке output.
     	
         String output = getUrlContent("https://api.dictionaryapi.dev/api/v2/entries/en/"+word);
-//                "https://api.openweathermap.org/data/2.5/weather?q="
-//                        + city
-//                        + "&appid=" + APIkey + "&units=metric"
+
         
 
         /**
          * Если output не пустой, то создаём json объект из строки и извлекаем из нее
          * необходимые данные. В конце возвращаем данные в текстовом формате.
          */
-        System.out.println("\nHey");
-      //  System.out.println(output);
+     
         if (!output.isEmpty()) {
-           // JSONObject object = new JSONObject(output);
         	List<String> text = Arrays.asList(output.split("definitions"));
         	String s[] = new String[text.size()];
         	String definition = "";
@@ -65,22 +60,8 @@ public class Weather {
                 definition += objects[i].get("definition")+";  ";
                
         	}
-        	 newWord = "Описание слова " + word + ":"
+        	 newWord = "Definition of the word " + word + ":"
                      + "\n\nDefinition: " + definition;
-//        	System.out.println("000 "+text.get(1));
-//           String str = text.get(1).substring(2);
-//           System.out.println(str);
-//           
-//            JSONArray array = new JSONArray(str);
-//            JSONObject obj = array.getJSONObject(0);
-//            System.out.println("\nobj "+obj);
-//            
-//           
-//            System.out.println("\n"+obj.get("definition"));
-//            newWord = "Описание слова " + word + ":"
-//                    + "\n\nDefinition: " + obj.get("definition")
-//                    + "\nСинонимы: " + obj.get("synonyms")
-//                    + "\nАнтонимы: " + obj.get("antonyms");
 
             System.out.println("\n"+newWord);
         }

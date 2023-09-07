@@ -1,4 +1,4 @@
-package pl.egor.telegram.WeatherTelegramBot;
+package pl.egor.telegram.TelegramDefinitionBot;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -10,7 +10,7 @@ public class Bot extends TelegramLongPollingBot {
 	private final String BOT_TOKEN = "6621838514:AAFSMolUjJKxMb33nFASElJMJpe4kpoXiWY";
 	private final String BOT_NAME = "wef1999bot";
 
-	private final Weather weather = new Weather();
+	private final Definition definition = new Definition();
 	
 	@Override
 	public void onUpdateReceived(Update update) {
@@ -22,15 +22,15 @@ public class Bot extends TelegramLongPollingBot {
 		switch(userText) {
 		
 		case "/start" :
-			sendMessage(chatId,"Помогу узнать прогноз погоды в любом городе");
+			sendMessage(chatId,"I will help you with definitions");
 		break;
 		
 		
 		case "/help" :
-			sendMessage(chatId,"Введи город");
+			sendMessage(chatId,"Just input a word");
 			break;
 			
-	    default : sendMessage(chatId,weather.getWeather(userText));
+	    default : sendMessage(chatId,definition.getDefinition(userText));
 		
 		}
 	}

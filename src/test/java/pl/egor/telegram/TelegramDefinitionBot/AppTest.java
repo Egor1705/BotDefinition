@@ -1,4 +1,4 @@
-package pl.egor.telegram.WeatherTelegramBot;
+package pl.egor.telegram.TelegramDefinitionBot;
 
 import static org.junit.Assert.assertTrue;
 

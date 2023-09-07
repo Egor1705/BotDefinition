@@ -34,9 +34,9 @@ public class Definition {
         return content.toString(); // Получение строки с данными.
     }
 
-    // Метод, который получает текущую погоду в указанном городе.
+    // Метод, который получает текущее определение для указанного слова.
     public String getDefinition(String word) {
-        // Делаем запрос к OpenWeatherMap. Возвращаемое значение метода getUrlContent() присваивается строке output.
+        //Возвращаемое значение метода getUrlContent() присваивается строке output.
     	
         String output = getUrlContent("https://api.dictionaryapi.dev/api/v2/entries/en/"+word);
 

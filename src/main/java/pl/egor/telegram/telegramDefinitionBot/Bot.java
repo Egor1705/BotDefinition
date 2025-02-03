@@ -1,4 +1,4 @@
-package pl.egor.telegram.TelegramDefinitionBot;
+package pl.egor.telegram.telegramDefinitionBot;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;

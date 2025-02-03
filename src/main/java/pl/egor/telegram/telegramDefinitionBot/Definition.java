@@ -1,4 +1,4 @@
-package pl.egor.telegram.TelegramDefinitionBot;
+package pl.egor.telegram.telegramDefinitionBot;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -38,7 +38,7 @@ public class Definition {
     public String getDefinition(String word) {
         //Возвращаемое значение метода getUrlContent() присваивается строке output.
     	
-        String output = getUrlContent("https://api.dictionaryapi.dev/api/v2/entries/en/"+word);
+        String output = getUrlContent("https://api.dictionaryapi.dev/api/v2/entries/en/"+word.toLowerCase());
 
         
 
@@ -47,6 +47,9 @@ public class Definition {
          * необходимые данные. В конце возвращаем данные в текстовом формате.
          */
      
+        if(!output.contains(word.toLowerCase())) {
+        return "There is no definition";	
+        }
         if (!output.isEmpty()) {
         	List<String> text = Arrays.asList(output.split("definitions"));
         	String s[] = new String[text.size()];
